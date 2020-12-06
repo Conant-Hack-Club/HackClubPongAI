@@ -18,7 +18,7 @@ class Game {
     }
 
     randomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
+        return Math.random() * (max - min) + min;
     }
 
 
@@ -40,10 +40,13 @@ class Game {
                 // console.log(this.windowHeight);
 
                 //inputs are x of ball, y of ball, x of paddle, y of paddle
+
+
                 inputs.push((this.xBall - (this.centerX - this.windowWidth/2)) / this.windowWidth) //this normalizes the input
                 // inputs.push((this.yBall - (this.centerY - this.windowHeight/2)) / this.windowHeight) 
                 inputs.push((this.xPaddle - (this.centerX - this.windowWidth/2)) / this.windowWidth) //this normalizes the input
                 // inputs.push((this.yPaddle - this.centerY) / this.windowHeight) 
+                // inputs.push((this.xBall - this.xPaddle) / this.windowHeight);
                 // console.log("game: " + this.gameNumber)
                 // console.log(inputs)
                 // console.log(this.brain)
@@ -127,9 +130,9 @@ class Game {
     }
 
     moveSlider(moveLeft) {
-        if(moveLeft && this.xPaddle > this.centerX - this.windowWidth/2 + this.paddleWidth/2) {
+        if(moveLeft && this.xPaddle > this.centerX - this.windowWidth/2 + this.paddleWidth/2 - 15) {
             this.xPaddle -= 5;
-        } else if (this.xPaddle < this.centerX + this.windowWidth/2 - 2 * this.paddleWidth) {
+        } else if (this.xPaddle < this.centerX + this.windowWidth/2 - 2 * this.paddleWidth + 40) {
             this.xPaddle += 5;
         } else {
             this.fitness -= 2;
